@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  database:
+    image: postgres
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+
+  frontend:
+    build: ./frontend
+    container_name: frontend
+    command: npm start 0.0.0.0:3000
+    ports:
+      - "3000:3000"
+
+  backend:
+    build: ./backend
+    container_name: backend
+    command: python3 manage.py runserver
+    ports:
+      - "8000:8000"
+    depends_on:
+      - database
+    
