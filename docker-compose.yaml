@@ -3,12 +3,15 @@ version: '3.8'
 services:
   database:
     image: postgres
+    restart: always
     volumes:
       - ./data/db:/var/lib/postgresql/data
     environment:
-      - POSTGRES_DB=travel
+      - POSTGRES_DB=postgres
       - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=engineer
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - "5432:5432"
 
   frontend:
     build: ./frontend
