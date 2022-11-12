@@ -21,11 +21,11 @@ class District(models.Model):
 
 class Location(models.Model):
     RATING_CHOICES = (
-        (1, "★☆☆☆☆"),
-        (2, "★★☆☆☆"),
-        (3, "★★★☆☆"),
-        (4, "★★★★☆"),
-        (5, "★★★★★"),
+        ('1', "★☆☆☆☆"),
+        ('2', "★★☆☆☆"),
+        ('3', "★★★☆☆"),
+        ('4', "★★★★☆"),
+        ('5', "★★★★★"),
     )
     district = models.ForeignKey(District, on_delete=models.DO_NOTHING, null=True, related_name='locations')
     title = models.CharField(_('place'), max_length=15)
@@ -42,6 +42,7 @@ class Media(models.Model):
     video = models.FileField(
         _('video'),
         upload_to=_('places'),
+        blank=True, null=True,
         validators=[
             FileExtensionValidator(
                 allowed_extensions=['MOV', 'avi', 'mp4', 'webm', 'mkv']
