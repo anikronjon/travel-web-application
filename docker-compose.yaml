@@ -1,18 +1,6 @@
 version: '3.8'
 
 services:
-  database:
-    image: postgres
-    restart: always
-    volumes:
-      - ./data/db:/var/lib/postgresql/data
-    environment:
-      - POSTGRES_DB=postgres
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-    ports:
-      - "5432:5432"
-      - POSTGRES_PASSWORD=engineer
 
   frontend:
     build: ./frontend
@@ -27,6 +15,5 @@ services:
     command: python3 manage.py runserver 0.0.0.0:8000
     ports:
       - "8000:8000"
-    depends_on:
-      - database
+
     

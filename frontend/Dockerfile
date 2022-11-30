@@ -1,12 +1,9 @@
-FROM node:18-alpine
+FROM node:18.12-alpine
 
 WORKDIR /app
-
-COPY package.json .
-COPY package-lock.json .
-RUN npm ci
-
-# Copy all file
-COPY . ./
-
+COPY *.json .
+RUN npm install
+COPY . .
 EXPOSE 3000
+RUN addgroup app && adduser -S -G app app
+USER app

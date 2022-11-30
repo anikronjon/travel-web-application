@@ -1,7 +1,9 @@
 function App() {
   return (
     <div>
-      <h2>Start new project</h2>
+      <header>
+        <h2>Travel application</h2>
+      </header>
     </div>
   );
 }
