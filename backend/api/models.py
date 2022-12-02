@@ -49,3 +49,39 @@ class Media(models.Model):
             )
         ]
     )
+
+
+# Base Class
+class BaseClass(models.Model):
+    RATING_CHOICES = (
+        ('1', "★☆☆☆☆"),
+        ('2', "★★☆☆☆"),
+        ('3', "★★★☆☆"),
+        ('4', "★★★★☆"),
+        ('5', "★★★★★"),
+    )
+    name = models.CharField(max_length=50)
+    details = models.TextField(max_length=50)
+    rating = models.CharField(max_length=1, choices=RATING_CHOICES)
+    website = models.URLField(max_length=20)
+    image = models.ImageField(upload_to='unknown')
+
+    class Meta:
+        abstract = True
+
+
+# Restaurant
+class Restaurant(BaseClass):
+    location = models.ForeignKey(Location, on_delete=models.CASCADE, related_name='restaurants')
+    image = models.ImageField(upload_to='restaurants')
+
+
+# Hotel
+class Hotel(BaseClass):
+    location = models.ForeignKey(Location, on_delete=models.CASCADE, related_name='hotels')
+    image = models.ImageField(upload_to='hotels')
+
+
+# Agency
+class Agency(BaseClass):
+    pass

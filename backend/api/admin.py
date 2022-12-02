@@ -3,7 +3,7 @@ from django.db.models import Count
 from django.urls import reverse
 from django.utils.html import format_html, urlencode
 
-from .models import Division, District, Location, Media
+from .models import Division, District, Location, Media, Restaurant, Hotel, Agency
 
 
 # Register your models here.
@@ -46,4 +46,23 @@ class MediaInline(admin.TabularInline):
 class LocationAdmin(admin.ModelAdmin):
     list_display = ('title', 'district', 'rating')
     inlines = (MediaInline,)
+
+
+# Restaurant Admin
+@admin.register(Restaurant)
+class RestaurantAdmin(admin.ModelAdmin):
+    list_display = ['name', 'location', 'rating']
+
+
+# Hotel Admin
+@admin.register(Hotel)
+class HotelAdmin(admin.ModelAdmin):
+    list_display = ['name', 'location', 'rating']
+
+
+# Agency Admin
+@admin.register(Agency)
+class AgencyAdmin(admin.ModelAdmin):
+    list_display = ['name', 'rating']
+
 
