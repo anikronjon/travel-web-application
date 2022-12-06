@@ -12,6 +12,4 @@ router.register('agency', views.AgencyModelView)
 
 
 app_name = 'api'
-urlpatterns = [
-    path('auth/', include('rest_framework.urls'))
-] + router.urls
+urlpatterns = router.urls

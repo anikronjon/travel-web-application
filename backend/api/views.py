@@ -1,11 +1,15 @@
 from rest_framework.viewsets import ReadOnlyModelViewSet
+from rest_framework.permissions import IsAuthenticated
 from .models import Division, District, Location, Restaurant, Hotel, Agency
+
+
 from . import serializers
 
 
 class DivisionModelView(ReadOnlyModelViewSet):
     queryset = Division.objects.all()
     serializer_class = serializers.DivisionSerializer
+    permission_classes = [IsAuthenticated]
 
 
 class DistrictModelView(ReadOnlyModelViewSet):
