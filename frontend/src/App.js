@@ -1,29 +1,58 @@
-import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap/dist/js/bootstrap.bundle'
-import { BrowserRouter, Routes, Route, NavLink, Link } from 'react-router-dom';
-import Header from "./components/Header";
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import Nav from './components/Nav';
 import About from './pages/About';
 import Home from './pages/Home';
 import Hotel from './pages/Hotel';
 import Resturent from './pages/Resturent';
+import Error from './pages/Error'
+import "./index.css"
 
-function App() {
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: (
+      <>
+        <Nav />
+        <Home />
+      </>
+    ),
+    errorElement: <Error />
+  },
+  {
+    path: '/about',
+    element: (
+      <>
+        <Nav />
+        <About />
+      </>
+    )
+  },
+  {
+    path: '/hotel',
+    element: (
+      <>
+        <Nav />
+        <Hotel />
+      </>
+    )
+  },
+  {
+    path: '/resturent',
+    element: (
+      <>
+        <Nav />
+        <Resturent />
+      </>
+    )
+  }
+])
+
+
+const App =() => {
   return (
     <>
-      <BrowserRouter>
-        <nav>
-          <NavLink to='/'>Home</NavLink>
-          <NavLink to='/about'>About</NavLink>
-          <NavLink to='/hotel'>Hotel</NavLink>
-          <NavLink to='/resturent'>Resturent</NavLink>
-        </nav>
-        <Routes>
-          <Route path='/' element={<Home />}/>
-          <Route path='/about' element={<About />} />
-          <Route path='/hotel' element={<Hotel />} />
-          <Route path='/resturent' element={<Resturent />} />
-        </Routes>
-      </BrowserRouter>
+      <RouterProvider router={router}/>
+      <h2 className='bg-blue'>This is awesome</h2>
     </>
   );
 }
