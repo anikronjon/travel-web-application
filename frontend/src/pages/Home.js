@@ -11,10 +11,19 @@ function Home() {
   const agencyRes = useGetAllAgencyQuery();
   return (
     <div className='container m-5'>
-      <h1>List of Hotels</h1>
-      <Hotel />
-      <Resturent />
-      <Agency />
+      <div className='mt-5'>
+        <h1 className='text-xl p-3 font-bold'>List of Hotel</h1>
+        <Hotel />
+      </div>
+      <div className='mt-8'>
+        <h1 className='text-xl p-3 font-bold'>List of Hotel</h1>
+        <Resturent />
+      </div>
+      <div className='mt-8'>
+        <h1 className='text-xl p-3 font-bold'>List of Hotel</h1>
+        <Agency />
+      </div>
+
     </div>
   )
 }

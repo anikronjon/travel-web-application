@@ -5,7 +5,7 @@ import { useGetAllHotelsQuery } from "../services/API";
 function Hotel() {
   const response = useGetAllHotelsQuery();
   return (
-    <div className="flex md:flex-row flex-col mx-5 gap-5">
+    <div className="flex md:flex-row flex-col gap-5">
     {
       response.data?.map((value) =>
       <div key={value.id}>
