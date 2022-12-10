@@ -61,9 +61,9 @@ class BaseClass(models.Model):
         ('5', "★★★★★"),
     )
     name = models.CharField(max_length=50)
-    details = models.TextField(max_length=50)
+    details = models.TextField()
     rating = models.CharField(max_length=1, choices=RATING_CHOICES)
-    website = models.URLField(max_length=20)
+    website = models.URLField(max_length=50)
     image = models.ImageField(upload_to='unknown')
 
     class Meta:
@@ -84,4 +84,4 @@ class Hotel(BaseClass):
 
 # Agency
 class Agency(BaseClass):
-    pass
+    image = models.ImageField(upload_to='agency')
