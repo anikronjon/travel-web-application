@@ -1,9 +1,20 @@
-import React from 'react'
+import React from "react";
+import VCard from "../components/VCard";
+import { useGetAllHotelsQuery } from "../services/API";
 
 function Hotel() {
+  const response = useGetAllHotelsQuery();
   return (
-    <div>Hotel</div>
+    <div className="flex md:flex-row flex-col mx-5 gap-5">
+    {
+      response.data?.map((value) =>
+      <div key={value.id}>
+        <VCard title={value.name} img={value.image}/>
+      </div>
+      )
+    }
+    </div>
   )
 }
 
-export default Hotel
+export default Hotel;

@@ -1,6 +1,5 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Nav from './components/Nav';
-import About from './pages/About';
 import Home from './pages/Home';
 import Hotel from './pages/Hotel';
 import Resturent from './pages/Resturent';
@@ -9,6 +8,8 @@ import "./index.css"
 import SignIN from './Auth/SignIN';
 import SignUP from './Auth/SignUP';
 import Dashboard from './Auth/Dashboard';
+import Footer from './components/Footer';
+import Agency from './pages/Agency';
 
 const router = createBrowserRouter([
   {
@@ -22,11 +23,11 @@ const router = createBrowserRouter([
     errorElement: <Error />
   },
   {
-    path: '/about',
+    path: '/agency',
     element: (
       <>
         <Nav />
-        <About />
+        <Agency />
       </>
     )
   },
@@ -82,6 +83,7 @@ const App =() => {
   return (
     <>
       <RouterProvider router={router}/>
+      <Footer />
     </>
   );
 }
